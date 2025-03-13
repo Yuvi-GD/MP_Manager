@@ -43,4 +43,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Would you like to add any additional sections or details to the README file?
+Would you like to add any additional sections or details to the README file? (mention in [issues](https://github.com/Yuvi-GD/MP_Manager/issues))
