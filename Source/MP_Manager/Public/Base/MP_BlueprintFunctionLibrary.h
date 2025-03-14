@@ -42,4 +42,5 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "MP_Manager|FLibrary", meta = (WorldContext = "WorldContextObject", HidePin = "WorldContextObject"))
 	static AMP_PlayerController_Lobby* GetLobbyPlayerController(const UObject* WorldContextObject);
+
 };

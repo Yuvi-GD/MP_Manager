@@ -26,22 +26,25 @@ public:
 
 
 	// BlueprintNativeEvent, BlueprintCallable type of interface trigger by Plugin PlayerController
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP_Session")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP Manager|MP_Session")
 	void CreateSession();
 
 	 //BlueprintNativeEvent, BlueprintCallable type of interface trigger by Plugin PlayerController
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP_Session")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP Manager|MP_Session")
 	void UpdateSession();
 
 	 //BlueprintNativeEvent, BlueprintCallable type of interface trigger by Plugin PlayerController
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP_Session")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP Manager|MP_Session")
 	void LeaveSession();
 
 	//BlueprintNativeEvent, BlueprintCallable type of interface trigger by Plugin PlayerController
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP_Session")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP Manager|MP_Session")
 	void RemakeSession();
 
 	//BlueprintNativeEvent, BlueprintCallable type of interface trigger by Plugin PlayerController
-	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP_Session")
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP Manager|MP_Session")
 	FString GetPlayerData();
+
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "MP Manager|MP_Session")
+	void MP_Login(int32 Index);
 };
