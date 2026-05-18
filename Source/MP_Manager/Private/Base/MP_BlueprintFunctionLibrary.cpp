@@ -87,3 +87,57 @@ AMP_PlayerController_Lobby* UMP_BlueprintFunctionLibrary::GetLobbyPlayerControll
     return PlayerPC;
 }
 
+bool UMP_BlueprintFunctionLibrary::CheckUniqueNetId(const UObject* WorldContextObject, FUniqueNetIdRepl NetIdA, FUniqueNetIdRepl NetIdB)
+{
+    if (!WorldContextObject) {
+        return false;
+    }
+
+    UWorld* World = WorldContextObject->GetWorld();
+    if (!World) {
+        return false;
+    }
+
+    return NetIdA == NetIdB;
+}
+
+APlayerState* UMP_BlueprintFunctionLibrary::FindPlayerStateByUniqueNetId(UObject* WorldContextObject, const FUniqueNetIdRepl& TargetUniqueNetId)
+{
+    if (!WorldContextObject || !TargetUniqueNetId.IsValid())
+    {
+        return nullptr;
+    }
+
+    UWorld* World = WorldContextObject->GetWorld();
+    if (!World)
+    {
+        return nullptr;
+    }
+
+    // Loop through all Player Controllers in the world
+    for (FConstPlayerControllerIterator Iterator = World->GetPlayerControllerIterator(); Iterator; ++Iterator)
+    {
+        APlayerController* PlayerController = Iterator->Get();
+        if (!PlayerController)
+        {
+            continue;
+        }
+
+        APlayerState* PlayerState = PlayerController->PlayerState;
+        if (!PlayerState)
+        {
+            continue;
+        }
+
+        // Get the Unique Net ID from the Player State
+        const FUniqueNetIdRepl CurrentUniqueNetId = PlayerState->GetUniqueId();
+        if (CurrentUniqueNetId == TargetUniqueNetId)
+        {
+            return PlayerState;
+        }
+    }
+
+    // Return nullptr if no matching Player State is found
+    return nullptr;
+}
+

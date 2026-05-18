@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "UI/MP_Button.h"
+#include "UI/MP_Btn.h"
 #include "Components/VerticalBox.h"
 #include "MP_PlayerListPanel.generated.h"
 

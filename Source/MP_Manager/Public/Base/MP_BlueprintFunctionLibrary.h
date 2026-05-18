@@ -43,4 +43,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "MP_Manager|FLibrary", meta = (WorldContext = "WorldContextObject", HidePin = "WorldContextObject"))
 	static AMP_PlayerController_Lobby* GetLobbyPlayerController(const UObject* WorldContextObject);
 
+	UFUNCTION(BlueprintPure, Category = "MP_Manager|FLibrary", meta = (WorldContext = "WorldContextObject", HidePin = "WorldContextObject"))
+	static bool CheckUniqueNetId(const UObject* WorldContextObject , FUniqueNetIdRepl NetIdA, FUniqueNetIdRepl NetIdB);
+
+	UFUNCTION(BlueprintPure, Category = "MP_Manager|FLibrary", meta = (WorldContext = "WorldContextObject", HidePin = "WorldContextObject"))
+	static APlayerState* FindPlayerStateByUniqueNetId(UObject* WorldContextObject, const FUniqueNetIdRepl& TargetUniqueNetId);
 };

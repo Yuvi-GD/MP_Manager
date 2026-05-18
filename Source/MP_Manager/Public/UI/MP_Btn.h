@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
-#include "MP_Button.generated.h"
+#include "MP_Btn.generated.h"
 
 class UTextBlock;
 class UButtonSlot;
@@ -17,12 +17,12 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnMPButtonClicked, int32, ButtonInd
  * 
  */
 UCLASS()
-class MP_MANAGER_API UMP_Button : public UButton
+class MP_MANAGER_API UMP_Btn : public UButton
 {
     GENERATED_BODY()
 	
 public:
-    UMP_Button(const FObjectInitializer& ObjectInitializer);
+    UMP_Btn(const FObjectInitializer& ObjectInitializer);
 
 protected:
     // Called when the button is constructed
@@ -36,36 +36,36 @@ protected:
 	virtual TSharedRef<SWidget> RebuildWidget() override;
 
 public:
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Button")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Btn")
     int32 ButtonIndex;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Button")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Btn")
     FText ButtonText;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Button|Text")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Btn|Text")
     FSlateFontInfo Font;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Button|Text")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Btn|Text")
     FSlateColor TextColor;
 
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Button|Text")
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MP_Btn|Text")
     FMargin TextPadding;
 
-    UFUNCTION(BlueprintCallable, Category = "MP_Button")
+    UFUNCTION(BlueprintCallable, Category = "MP_Btn")
     void SetButtonText(const FText& NewText);
 
-    UFUNCTION(BlueprintCallable, Category = "MP_Button")
+    UFUNCTION(BlueprintCallable, Category = "MP_Btn")
     void SetTextColor(const FSlateColor& NewColor);
 
-    UFUNCTION(BlueprintCallable, Category = "MP_Button")
+    UFUNCTION(BlueprintCallable, Category = "MP_Btn")
     void SetTextPadding(const FMargin& NewTextPadding);
 
-    UFUNCTION(BlueprintCallable, Category = "MP_Button")
+    UFUNCTION(BlueprintCallable, Category = "MP_Btn")
     void HandleButtonClick();
 
 
     // Event Dispatcher to bind to button clicks
-    UPROPERTY(BlueprintAssignable, Category = "MP_Button|Events")
+    UPROPERTY(BlueprintAssignable, Category = "MP_Btn|Events")
     FOnMPButtonClicked OnMPButtonClicked;
 
     UPROPERTY()

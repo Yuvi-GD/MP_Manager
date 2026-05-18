@@ -52,7 +52,7 @@ void UMP_PlayerListPanel::SetPlayerEntry(const FString& PlayerName, const int32&
 		RefreshPanel(PanelLimit);
 	}
 
-	UMP_Button* NewButton = Cast<UMP_Button>(this->GetChildAt(Index));
+	UMP_Btn* NewButton = Cast<UMP_Btn>(this->GetChildAt(Index));
 	if (NewButton) 
 	{
 		NewButton->SetButtonText(FText::FromString(PlayerName));
@@ -103,7 +103,7 @@ void UMP_PlayerListPanel::CreatePlayerEntry_Internal(const FString& PlayerName, 
 {
 
 	// Create a new button for the player entry
-	UMP_Button* NewButton = NewObject<UMP_Button>(this);
+	UMP_Btn* NewButton = NewObject<UMP_Btn>(this);
 	if (NewButton)
 	{
 		//Button Property set

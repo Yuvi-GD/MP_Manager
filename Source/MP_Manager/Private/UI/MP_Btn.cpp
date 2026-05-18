@@ -1,28 +1,28 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UI/MP_Button.h"
+#include "UI/MP_Btn.h"
 #include "Components/TextBlock.h"
 #include "Components/ButtonSlot.h"
 #include "Components/SlateWrapperTypes.h"
 
-UMP_Button::UMP_Button(const FObjectInitializer& ObjectInitializer)
+UMP_Btn::UMP_Btn(const FObjectInitializer& ObjectInitializer)
 {
     ButtonIndex = -1;
     ButtonText = FText::FromString(TEXT("Text"));
     TextPadding = 5.0f;
     TextColor = FSlateColor(FLinearColor::Black);
-    OnClicked.AddDynamic(this, &UMP_Button::HandleButtonClick);  // Bind the OnClicked event to HandleButtonClick
+    OnClicked.AddDynamic(this, &UMP_Btn::HandleButtonClick);  // Bind the OnClicked event to HandleButtonClick
 
 }
 
-TSharedRef<SWidget> UMP_Button::RebuildWidget()
+TSharedRef<SWidget> UMP_Btn::RebuildWidget()
 {
     BuidButton();
     return Super::RebuildWidget();
 }
 
-void UMP_Button::BuidButton()
+void UMP_Btn::BuidButton()
 {
     // Create TextBlock
     if (!TextBlock)
@@ -42,13 +42,13 @@ void UMP_Button::BuidButton()
     }
 }
 
-//void UMP_Button::NativeConstruct()
+//void UMP_Btn::NativeConstruct()
 //{
 //    BuidButton();
 //}
 
 #if WITH_EDITOR
-void UMP_Button::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
+void UMP_Btn::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEvent)
 {
     Super::PostEditChangeProperty(PropertyChangedEvent);
 
@@ -57,7 +57,7 @@ void UMP_Button::PostEditChangeProperty(FPropertyChangedEvent& PropertyChangedEv
 }
 #endif
 
-void UMP_Button::SetButtonText(const FText& NewText)
+void UMP_Btn::SetButtonText(const FText& NewText)
 {
     ButtonText = NewText;
     if (TextBlock)
@@ -66,7 +66,7 @@ void UMP_Button::SetButtonText(const FText& NewText)
     }
 }
 
-void UMP_Button::SetTextColor(const FSlateColor& NewColor)
+void UMP_Btn::SetTextColor(const FSlateColor& NewColor)
 {
     TextColor = NewColor;
     if (TextBlock)
@@ -75,7 +75,7 @@ void UMP_Button::SetTextColor(const FSlateColor& NewColor)
     }
 }
 
-void UMP_Button::SetTextPadding(const FMargin& NewTextPadding)
+void UMP_Btn::SetTextPadding(const FMargin& NewTextPadding)
 {
     TextPadding = NewTextPadding;
     if (TextBlock)
@@ -88,7 +88,7 @@ void UMP_Button::SetTextPadding(const FMargin& NewTextPadding)
     }
 }
 
-void UMP_Button::HandleButtonClick()
+void UMP_Btn::HandleButtonClick()
 {
     UE_LOG(LogTemp, Warning, TEXT("Button with Index %d clicked!"), ButtonIndex);
 

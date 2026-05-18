@@ -56,7 +56,10 @@ void AMP_GameMode_Lobby::Logout(AController* Exiting)
 		GetWorld()->GetTimerManager().SetTimer(TimerHandle, [this, ExitingPlayer]()
 		{
 			AMP_GameState_Lobby* GameStateLobby = Cast<AMP_GameState_Lobby>(GameState);
-			GameStateLobby->ServerUpdatePlayerData();
+			if (GameStateLobby)
+			{
+				GameStateLobby->ServerUpdatePlayerData();
+			}
 		}, 0.05f, false);
 	}
 }
