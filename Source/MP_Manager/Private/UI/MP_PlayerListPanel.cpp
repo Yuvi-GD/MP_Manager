@@ -4,7 +4,7 @@
 #include "Components/VerticalBoxSlot.h"
 #include "Components/TextBlock.h"
 #include "Components/ButtonSlot.h"
-#include "Slate/SlateBrushAsset.h"
+#include "Runtime/Launch/Resources/Version.h"
 #include "Delegates/IDelegateInstance.h"
 
 UMP_PlayerListPanel::UMP_PlayerListPanel()
@@ -107,7 +107,20 @@ void UMP_PlayerListPanel::CreatePlayerEntry_Internal(const FString& PlayerName, 
 	if (NewButton)
 	{
 		//Button Property set
-		FButtonStyle ButtonStyle = NewButton->GetStyle();
+		// GetStyle() was introduced in UE 5.2 to replace direct WidgetStyle access
+#if ENGINE_MAJOR_VERSION > 5 || (ENGINE_MAJOR_VERSION == 5 && ENGINE_MINOR_VERSION >= 2)
+		FButtonStyle ButtonStyle = GetStyle();
+#else
+		FButtonStyle ButtonStyle;
+		if (UMP_Btn* DefaultBtn = Cast<UMP_Btn>(UMP_Btn::StaticClass()->GetDefaultObject()))
+		{
+			ButtonStyle = DefaultBtn->WidgetStyle;
+		}
+		else
+		{
+			ButtonStyle = FButtonStyle();
+		}
+#endif
 		FSlateBrush Brush;
 		Brush.DrawAs = ESlateBrushDrawType::Box;
 		ButtonStyle.SetNormal(Brush);
